@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)file:///C:/Users/aluno.sesipaulista/Desktop/index.html -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voz Sem Medo</title>
+  <link href="./vozsemmedosite_files/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    main section {
+      display: none;
+    }
+    .active-section {
+      display: block;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+    .chat-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 300px;
+      overflow-y: scroll;
+      background: #fff;
+      margin-bottom: 10px;
+    }
+    .message {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .message.user {
+      justify-content: flex-end;
+    }
+    .message.bot {
+      justify-content: flex-start;
+    }
+    .message-content {
+      max-width: 75%;
+      padding: 10px;
+      border-radius: 15px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .user .message-content {
+      background-color: #dcf8c6;
+      color: black;
+    }
+    .bot .message-content {
+      background-color: #f1f0f0;
+      color: black;
+    }
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+    #loginForm input, #registerForm input {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-danger text-white text-center p-3">
+    <img src="./vozsemmedosite_files/600px-Stop_bullying_logo.png" alt="Logotipo Anti-Bullying" style="height: 60px;">
+    <h1 class="m-0">Voz Sem Medo</h1>
+    <p>Contra o bullying e o silêncio, somos a sua voz!</p>
+  </header>
+  <div class="d-flex flex-wrap">
+    <aside class="bg-light p-3" style="min-width: 200px;">
+      <nav class="nav flex-column">
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage(&#39;login&#39;)">Login</button>
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage(&#39;home&#39;)">Tela de Início</button>
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage(&#39;sobre&#39;)">Mais Informações Sobre Nós</button>
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage(&#39;profissionais&#39;)">Suportes Profissionais</button>
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage(&#39;chat&#39;)">Chat de Suporte</button>
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage(&#39;ligue&#39;)">Ligue Para Nós</button>
+      </nav>
+    </aside>
+    <main id="main-content" class="p-4 flex-grow-1">
+      <section id="login" class="active-section">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <input type="text" id="loginId" class="form-control" placeholder="Email, Telefone ou CPF" required="">
+          <input type="password" id="loginPassword" class="form-control" placeholder="Senha" required="">
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+        <p class="mt-2">Ainda não tem uma conta? <a href="file:///C:/Users/aluno.sesipaulista/Desktop/index.html#" onclick="showPage(&#39;register&#39;)">Criar Conta</a></p>
+      </section>
+
+      <section id="register">
+        <h2>Criar Conta</h2>
+        <form id="registerForm">
+          <input type="text" id="registerId" class="form-control" placeholder="Email, Telefone ou CPF" required="">
+          <input type="password" id="registerPassword" class="form-control" placeholder="Senha" required="">
+          <button type="submit" class="btn btn-success">Registrar</button>
+        </form>
+      </section>
+
+      <section id="home">
+        <h2>Tela de Início</h2>
+        <p>Bem-vindo ao <strong>Voz Sem Medo</strong>. Nosso objetivo é apoiar vítimas de bullying físico, virtual, escolar, social e estrutural, com foco especial em pessoas LGBTQIA+, pessoas com deficiência, autistas (TEA) e outras minorias vulneráveis. Queremos ser uma ponte entre o sofrimento e o acolhimento. Aqui você encontrará apoio psicológico, orientação, escuta ativa e ferramentas para lidar com situações de opressão. A sua dor será ouvida, compreendida e jamais ignorada. Nosso espaço é seguro, gratuito e acessível.</p>
+      </section>
+
+      <section id="sobre">
+        <h2>Mais Informações Sobre Nós</h2>
+        <p>O projeto "Voz Sem Medo" nasceu da necessidade urgente de combater o silêncio imposto pelo bullying. Percebemos que muitas vítimas sofrem caladas, sem saber a quem recorrer. Nossa missão é criar um ambiente seguro, acolhedor e funcional, onde qualquer pessoa possa buscar apoio emocional, psicológico e social. Contamos com profissionais qualificados e uma comunidade solidária, que entende a importância de escutar, orientar e ajudar de verdade. Nosso site foi criado para que você nunca mais se sinta sozinho. Aqui, você é valorizado. Aqui, você tem voz.</p>
+      </section>
+
+      <section id="profissionais">
+        <h2>Suportes Profissionais</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <img src="./vozsemmedosite_files/adult-1822567_960_720.jpg" alt="Psicóloga" class="img-fluid rounded">
+            <h4>Dra. Carolina Ribeiro</h4>
+            <p><strong>Psicóloga Clínica</strong> especializada em transtornos de ansiedade, traumas e autoestima. Atende adolescentes, jovens e adultos com escuta empática e acolhimento humanizado. Atua há 12 anos com vítimas de bullying escolar e cyberbullying.</p>
+          </div>
+          <div class="col-md-6">
+            <img src="./vozsemmedosite_files/retrato-de-mujer-médico.jpg" alt="Psiquiatra" class="img-fluid rounded">
+            <h4>Dra. Marcela Torres</h4>
+            <p><strong>Psiquiatra e Terapeuta Cognitivo-Comportamental</strong> com foco em pacientes LGBTQIA+, TEA e vítimas de violência psicológica. Especialista em intervenções em crises, incluindo pensamentos suicidas. Trabalha com acolhimento seguro e sem julgamentos.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="ligue">
+        <h2>Ligue Para Nós</h2>
+        <p>Não hesite em nos ligar se estiver passando por um momento difícil. Sabemos que o primeiro passo pode parecer assustador, mas estamos aqui para te escutar, orientar e acolher. Nossas linhas são diretas, sem tempo de espera, e sua ligação será sempre recebida com atenção e empatia. Você não está sozinho. Disque agora, e fale com alguém que se importa.</p>
+        <p><strong>Telefone: 0800 123 4567</strong> (Ligação gratuita e sigilosa)</p>
+      </section>
+
+      <section id="chat">
+        <h2>Chat de Suporte</h2>
+        <div class="chat-box" id="chatBox">
+          <div class="message bot">
+            <img src="./vozsemmedosite_files/4712107.png" class="icon" alt="Bot">
+            <div class="message-content">
+              Olá, como posso lhe ajudar? Você está se sentindo bem hoje?
+            </div>
+          </div>
+          <div class="message bot">
+            <img src="./vozsemmedosite_files/4712107.png" class="icon" alt="Bot">
+            <div class="message-content">
+              Deixe-me explicar sobre nosso site "Voz sem medo": somos uma comunidade dedicada a ajudar pessoas que sofrem bullying, seja virtual ou físico. A propósito, temos dois profissionais da saúde à disposição: uma psicóloga e um psiquiatra, prontos para te ouvir.
+            </div>
+          </div>
+        </div>
+        <textarea id="userMessage" placeholder="Digite sua mensagem..."></textarea>
+        <button class="btn btn-primary" onclick="sendMessage()">Enviar</button>
+      </section>
+    </main>
+  </div>
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active-section'));
+      document.getElementById(id).classList.add('active-section');
+    }
+
+    const users = JSON.parse(localStorage.getItem('users') || '{}');
+
+    document.getElementById("registerForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const id = document.getElementById("registerId").value;
+      const pass = document.getElementById("registerPassword").value;
+      users[id] = pass;
+      localStorage.setItem('users', JSON.stringify(users));
+      alert("Conta criada com sucesso!");
+      showPage('login');
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const id = document.getElementById("loginId").value;
+      const pass = document.getElementById("loginPassword").value;
+      if (users[id] === pass) {
+        alert("Login bem-sucedido!");
+        showPage('home');
+      } else {
+        alert("Credenciais inválidas!");
+      }
+    });
+
+    async function sendMessage() {
+      const box = document.getElementById("chatBox");
+      const input = document.getElementById("userMessage");
+      const msg = input.value.trim();
+      if (!msg) return;
+      box.innerHTML += `
+        <div class='message user'>
+          <div class="message-content">${msg}</div>
+          <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" class="icon" alt="Usuário">
+        </div>`;
+      input.value = "";
+      box.scrollTop = box.scrollHeight;
+
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer SUA_CHAVE_API_AQUI"
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [{ role: "user", content: msg }]
+        })
+      });
+      const data = await response.json();
+      const reply = data.choices?.[0]?.message?.content || "Desculpe, não entendi.";
+
+      box.innerHTML += `
+        <div class='message bot'>
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712107.png" class="icon" alt="Bot">
+          <div class="message-content">${reply}</div>
+        </div>`;
+      box.scrollTop = box.scrollHeight;
+    }
+  </script>
+
+
+</body></html>

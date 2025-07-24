@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voz Sem Medo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    main section {
+      display: none;
+    }
+    .active-section {
+      display: block;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+    .chat-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 300px;
+      overflow-y: scroll;
+      background: #fff;
+      margin-bottom: 10px;
+    }
+    .message {
+      margin-bottom: 8px;
+    }
+    .message.user {
+      text-align: right;
+      color: blue;
+    }
+    .message.bot {
+      text-align: left;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-danger text-white text-center p-3">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Stop_bullying_logo.png/600px-Stop_bullying_logo.png" alt="Logotipo Anti-Bullying" style="height: 60px;">
+    <h1 class="m-0">Voz Sem Medo</h1>
+    <p>Contra o bullying e o silêncio, somos a sua voz!</p>
+  </header>
+  <div class="d-flex flex-wrap">
+    <aside class="bg-light p-3" style="min-width: 200px;">
+      <nav class="nav flex-column">
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage('login')">Login</button>
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage('home')">Tela de Início</button>
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage('sobre')">Mais Informações Sobre Nós</button>
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage('profissionais')">Suportes Profissionais</button>
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage('chat')">Chat de Suporte</button>
+        <button class="btn btn-outline-secondary mb-2" onclick="showPage('ligue')">Ligue Para Nós</button>
+      </nav>
+    </aside>
+    <main id="main-content" class="p-4 flex-grow-1">
+      <section id="login" class="active-section">
+        <h2>Login</h2>
+        <form onsubmit="return loginUser()">
+          <input id="loginUser" class="form-control mb-2" type="text" placeholder="Email, Telefone ou CPF" required>
+          <input id="loginPassword" class="form-control mb-2" type="password" placeholder="Senha" required>
+          <button class="btn btn-danger" type="submit">Entrar</button>
+          <p class="mt-2">Ainda não tem uma conta? <a href="#" onclick="showPage('register')">Criar Conta</a></p>
+        </form>
+      </section>
+      <section id="register">
+        <h2>Cadastro</h2>
+        <form onsubmit="return registerUser()">
+          <input id="newUser" class="form-control mb-2" type="text" placeholder="Email, Telefone ou CPF" required>
+          <input id="newPassword" class="form-control mb-2" type="password" placeholder="Senha" required>
+          <button class="btn btn-success" type="submit">Cadastrar</button>
+        </form>
+      </section>
+      <section id="home">
+        <h2>Bem-vindo ao Voz Sem Medo</h2>
+        <p>Nosso site foi criado para ajudar vítimas de bullying...</p>
+        <img src="https://i0.wp.com/www.socialhero.com.br/wp-content/uploads/2021/03/Bullying-LGBTQ.jpg?resize=800%2C445&ssl=1" class="img-fluid" alt="Bullying LGBTQ">
+      </section>
+      <section id="sobre">
+        <h2>Mais Informações Sobre Nós</h2>
+        <p>Nosso objetivo é oferecer ajuda rápida, sem espera.</p>
+        <img src="https://www.unasus.gov.br/sites/default/files/styles/blog_capa/public/2021-06/bullying_capa.png" class="img-fluid" alt="Informações sobre bullying">
+      </section>
+      <section id="profissionais">
+        <h2>Suportes Profissionais</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <img src="https://www.publicdomainpictures.net/pictures/320000/velka/portrait-of-happy-doctor.jpg" class="img-fluid" alt="Profissional 1">
+            <p>Dra. Amanda Oliveira - Psicóloga Clínica</p>
+          </div>
+          <div class="col-md-6">
+            <img src="https://cdn.pixabay.com/photo/2015/03/26/09/39/doctor-690046_1280.jpg" class="img-fluid" alt="Profissional 2">
+            <p>Dr. João Lima - Psiquiatra</p>
+          </div>
+        </div>
+      </section>
+      <section id="chat">
+        <h2>Chat de Suporte</h2>
+        <div class="chat-box" id="chatBox"></div>
+        <textarea id="userMessage" placeholder="Digite sua mensagem..."></textarea>
+        <button class="btn btn-primary" onclick="sendMessage()">Enviar</button>
+      </section>
+      <section id="ligue">
+        <h2>Ligue para Nós</h2>
+        <p>Central de Ajuda 24h: <strong>0800 123 4567</strong></p>
+      </section>
+    </main>
+  </div>
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active-section'));
+      document.getElementById(id).classList.add('active-section');
+    }
+
+    function registerUser() {
+      const user = document.getElementById('newUser').value;
+      const pass = document.getElementById('newPassword').value;
+      localStorage.setItem(user, pass);
+      alert("Conta criada com sucesso!");
+      showPage('login');
+      return false;
+    }
+
+    function loginUser() {
+      const user = document.getElementById('loginUser').value;
+      const pass = document.getElementById('loginPassword').value;
+      if (localStorage.getItem(user) === pass) {
+        alert("Login bem-sucedido!");
+        showPage('home');
+      } else {
+        alert("Usuário ou senha incorretos.");
+      }
+      return false;
+    }
+
+    function sendMessage() {
+      const box = document.getElementById("chatBox");
+      const input = document.getElementById("userMessage");
+      const msg = input.value.trim();
+      if (!msg) return;
+      box.innerHTML += `<div class='message user'><strong>Você:</strong> ${msg}</div>`;
+      input.value = "";
+      setTimeout(() => {
+        let resposta = "Obrigado por compartilhar. Estamos aqui para ajudar.";
+        if (msg.toLowerCase().includes("suicídio")) resposta = "Se você está pensando em suicídio, por favor, procure ajuda imediatamente. Ligue 188 ou fale com um de nossos profissionais.";
+        else if (msg.toLowerCase().includes("ajuda")) resposta = "Conte comigo. Um profissional em breve entrará em contato.";
+        box.innerHTML += `<div class='message bot'><strong>Bot:</strong> ${resposta}</div>`;
+        box.scrollTop = box.scrollHeight;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
